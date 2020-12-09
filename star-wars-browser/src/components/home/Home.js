@@ -1,9 +1,15 @@
 import React from 'react';
 
+import Navbar from '../navbar';
+import SearchResultsModal from '../search_results_modal';
+import Footer from '../footer';
+
 const Home = () => {
     return (
-        <div>
-            <h1 className='test'>Hello world</h1>
+        <div className='home__container'>
+            <Navbar/>
+            <SearchResultsModal/>
+            <Footer/>
         </div>
     )
 }
