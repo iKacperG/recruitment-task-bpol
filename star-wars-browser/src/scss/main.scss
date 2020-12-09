@@ -1,5 +1,10 @@
 @import './reset';
 
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
 @import './variables';
 
-@import '../components/home/test.scss';
+@import '../components/home/home.scss';
+@import '../components/navbar/navbar';
+@import '../components/logo/logo.scss';
+@import '../components/search/search.scss';
