@@ -6,26 +6,34 @@ import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext'
 
 const Search = () => {
 const {peopleData, setPeopleData} = useContext(PeopleDataContext);
-const [typedSearchRequest, setTypedSearchRequest] = useState('');
+const [typedSearchQuery, setTypedSearchRequest] = useState('');
 
 
 
-const fetchStarWarsPeople = () => {
-    fetch('https://swapi.dev/api/people/')
-    .then(response => response.json())
-    .then(data => setPeopleData(data.results))
-
-}
+const getPeople = async () => {
+        let peopleArray = []
+        console.log("Getting data")
+        let response = await fetch(`https://swapi.dev/api/people/?search=${typedSearchQuery}`)
+        let data = await response.json()
+        while (data.next!=null){
+            console.log("getting next page", data.next)
+            response = await fetch(data.next)
+            data = await response.json()
+            peopleArray.push(data.results)
+        }
+        peopleArray.push(data.results)
+        setPeopleData(peopleArray)
+    
+    }
 
 const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
-    fetchStarWarsPeople();
-
+    getPeople();
+    
 }
 
 const handleSearchInputChange = (event) => {
     setTypedSearchRequest(event.target.value)
-    
 }
 
     return (
@@ -37,5 +45,6 @@ const handleSearchInputChange = (event) => {
         </div>
     )
 }
+
 
 export default Search
