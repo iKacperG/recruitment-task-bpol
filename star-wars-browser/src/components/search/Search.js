@@ -20,6 +20,7 @@ const getPeople = async () => {
             response = await fetch(data.next)
             data = await response.json()
             peopleArray.push(data.results)
+
         }
         peopleArray.push(data.results)
         setPeopleData(peopleArray)

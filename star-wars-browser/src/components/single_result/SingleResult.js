@@ -1,7 +1,9 @@
 import React, {useState, useEffect, useContext} from 'react';
+import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
 import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext';
 
 const SingleResult = ({person}) => {
+    const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
     const { peopleData, setPeopleData } = useContext(PeopleDataContext)
     const [ planetData, setPlanetData ] = useState("")
 
@@ -17,15 +19,14 @@ const SingleResult = ({person}) => {
    
     useEffect(()=>{
        getPlanet()
-    },[peopleData])
+    },[peopleData, currentPage])
 
 return  (
-    <>
-    <div className='test'>{person.name}</div>
-    <div className='test'>{planetData.name}</div>
-    <div className='test'>{planetData.population}</div>
-
-    </>
+    <div className='person-info__container'>
+        <div className='person-info__element'>{person.name}</div>
+        <div className='person-info__element'>{planetData.name}</div>
+        <div className='person-info__element'>{planetData.population}</div>
+    </div>
 )
     
 }
