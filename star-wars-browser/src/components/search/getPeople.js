@@ -3,6 +3,7 @@ const getPeople = async (typedSearchQuery, setPeopleData, peopleData) => {
     console.log("Getting data")
     let response = await fetch(`https://swapi.dev/api/people/?search=${typedSearchQuery}`);
     let data = await response.json();
+    peopleArray.push(data.results);
 
     while (data.next!=null){
         console.log("getting next page", data.next);
@@ -11,8 +12,8 @@ const getPeople = async (typedSearchQuery, setPeopleData, peopleData) => {
         peopleArray.push(data.results);
 
     }
-
     peopleArray.push(data.results);
+    
     setPeopleData(peopleArray);
     
 }

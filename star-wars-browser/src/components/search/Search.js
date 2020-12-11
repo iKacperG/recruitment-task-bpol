@@ -33,7 +33,7 @@ const handleSearchInputChange = (event) => {
     return (
         <div className='search__container'>
             <form className='search__form' onSubmit={handleSearchButtonSubmit}>
-                <input className ='search__input' onChange={handleSearchInputChange} placeholder='search for your fav movie'/>
+                <input className ='search__input' value={typedSearchQuery} onChange={handleSearchInputChange} placeholder='search for your fav movie'/>
                 <button className='search__button'/>
             </form>
         </div>
