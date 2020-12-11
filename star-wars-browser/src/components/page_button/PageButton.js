@@ -3,7 +3,6 @@ import React, {useEffect} from 'react';
 const PageButton = ({number,setCurrentPage}) => {
 
     const handlePageClick = (event) => {
-
         setCurrentPage(Number(event.target.id));
 
     }
@@ -16,6 +15,7 @@ const PageButton = ({number,setCurrentPage}) => {
             {number}
         </li>
     )
+
 }
 
 export default PageButton;

@@ -1,43 +1,33 @@
-import React from 'react'
-
-import { useState, useContext } from 'react'
-import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
+import React from 'react';
 
 import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext';
+import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
+
+import getPeople from './getPeople';
+
+import { useState, useContext } from 'react'
+
+
+
 
 const Search = () => {
-const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
+
+const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
 const { peopleData, setPeopleData } = useContext(PeopleDataContext);
+
 const [ typedSearchQuery, setTypedSearchRequest ] = useState('');
 
 
-
-const getPeople = async () => {
-        let peopleArray = []
-        console.log("Getting data")
-        let response = await fetch(`https://swapi.dev/api/people/?search=${typedSearchQuery}`)
-        let data = await response.json()
-        while (data.next!=null){
-            console.log("getting next page", data.next)
-            response = await fetch(data.next)
-            data = await response.json()
-            peopleArray.push(data.results)
-
-        }
-        peopleArray.push(data.results)
-        setPeopleData(peopleArray)
-    
-    }
-
 const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
-    setCurrentPage(1)
-    getPeople();
+    setCurrentPage(1);
+    getPeople(typedSearchQuery, setPeopleData);
     
 }
 
 const handleSearchInputChange = (event) => {
-    setTypedSearchRequest(event.target.value)
+    setTypedSearchRequest(event.target.value);
+
 }
 
     return (
@@ -51,4 +41,4 @@ const handleSearchInputChange = (event) => {
 }
 
 
-export default Search
+export default Search;
