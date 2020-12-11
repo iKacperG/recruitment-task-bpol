@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex:1;
+    flex: 1;
 
     .search__form{
         width: 100%;
@@ -16,15 +16,17 @@
             border-radius: 2rem;
             height: 3rem;
             width: 50%;
-            border:none;
+            border: none;
             padding: $padding-base;
-            font-family: $font-secondary;
+            font-family: $font-primary;
 
             &:focus{
-              outline: none;
-              transition:0.3;
-              box-shadow: 2px 0px 44px 8px $color-primary-blackened;
+                transition: 0.3;
+                outline: none;
+                box-shadow: 2px 0px 44px 8px $color-primary-blackened;
+
             }
+
         }
 
         .search__button{
@@ -45,12 +47,9 @@
             &:focus{
                 outline: none;
                 transition:0.3;
-                box-shadow: 2px 0px 4px 8px $color-primary-blackened;
+                box-shadow: 0 0 18px 18px $color-primary;
+
               }
         }
     }
-}
-
-.test{
-    color:white;
 }
