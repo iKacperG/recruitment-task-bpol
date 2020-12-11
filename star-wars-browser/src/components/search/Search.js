@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { useState, useContext } from 'react'
+import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
 
 import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext';
 
 const Search = () => {
-const {peopleData, setPeopleData} = useContext(PeopleDataContext);
-const [typedSearchQuery, setTypedSearchRequest] = useState('');
+const { currentPage, setCurrentPage } = useContext(CurrentPageContext)
+const { peopleData, setPeopleData } = useContext(PeopleDataContext);
+const [ typedSearchQuery, setTypedSearchRequest ] = useState('');
 
 
 
@@ -29,6 +31,7 @@ const getPeople = async () => {
 
 const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
+    setCurrentPage(1)
     getPeople();
     
 }

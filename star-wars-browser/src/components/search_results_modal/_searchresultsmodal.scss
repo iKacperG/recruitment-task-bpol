@@ -1,6 +1,6 @@
 .page-changing__container{
     display: flex;
     position: absolute;
-    bottom: 0;
+    bottom: $margin-base;
     left: 0;
 }
