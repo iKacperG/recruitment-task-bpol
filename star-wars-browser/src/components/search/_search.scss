@@ -4,10 +4,16 @@
     align-items: center;
     flex: 1;
 
+    @include mediumScreen{
+        width:100%;
+    }
+
     .search__form{
         width: 100%;
         position: relative;
         padding: $padding-base;
+
+        
         
         .search__input{
             transition: 1s;
@@ -20,6 +26,9 @@
             padding: $padding-base;
             font-family: $font-primary;
 
+            @include mediumScreen{
+                width:100%;
+            }
             &:focus{
                 transition: 0.3;
                 outline: none;
@@ -43,6 +52,10 @@
             top: 50%;
             left: 50%;
             transform: translate(-120%,-50%);
+
+            @include mediumScreen{
+                left: 90%;
+            }
 
             &:focus{
                 outline: none;

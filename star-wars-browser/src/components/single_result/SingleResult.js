@@ -17,6 +17,7 @@ const SingleResult = ({person}) => {
     const [ planetData, setPlanetData ] = useState("");
     const [ filmsData, setFilmsData ] = useState([]);
     const [ filmsGotLoaded, setFilmsGotLoaded ] = useState(false);
+    const [ isOpened, setIsOpened ] = useState(false);
   
     const getFilmsArray = () => {
         person.films.forEach((film)=>{
@@ -26,11 +27,12 @@ const SingleResult = ({person}) => {
     }
 
     const handlePersonInfoClick = () => {
+        setIsOpened(false)
         setFilmsGotLoaded(false);
         setFilmsData([]);
         getFilmsArray();
         setFilmsGotLoaded(true);
-        renderFilmDetails(filmsGotLoaded,filmsData);  
+        renderFilmDetails(filmsGotLoaded,filmsData, isOpened, setIsOpened);  
         
     }
 
@@ -46,7 +48,7 @@ return  (
         <PersonInfoElement personProperty={planetData.name}/>
         <PersonInfoElement personProperty={planetData.population}/>
     </ul>
-    {renderFilmDetails(person.name, filmsGotLoaded, filmsData)}
+    {renderFilmDetails(person.name, filmsGotLoaded, filmsData, isOpened, setIsOpened)}
     </>
 )}
 

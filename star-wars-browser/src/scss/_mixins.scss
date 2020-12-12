@@ -6,3 +6,9 @@
     font-family: $font-primary;
   
 }
+
+@mixin mediumScreen {
+    @media (max-width: 700px){
+        @content
+    }
+}
