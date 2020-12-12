@@ -1,0 +1,15 @@
+@import './reset';
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+
+@import './variables';
+@import './mixins';
+
+@import '../components/home/home.scss';
+@import '../components/navbar/navbar';
+@import '../components/logo/logo.scss';
+@import '../components/search/search.scss';
+@import '../components/single_result/singleresult';
+@import '../components/page_button/pagebutton.scss';
+@import '../components/search_results_modal/searchresultsmodal';
+@import '../components/film_details_element/filmdetailselement';
+@import '../components/person_info_element/personinfoelement';
