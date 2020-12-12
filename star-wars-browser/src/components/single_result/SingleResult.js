@@ -5,6 +5,10 @@ import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext'
 
 import getPlanet from './getPlanet';
 import getFilm from './getFilm';
+import renderFilmDetails from './renderFilmDetails';
+
+import FilmDetailsElement from '../film_details_element';
+import PersonInfoElement from '../person_info_element';
 
 const SingleResult = ({person}) => {
     const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
@@ -12,51 +16,38 @@ const SingleResult = ({person}) => {
 
     const [ planetData, setPlanetData ] = useState("");
     const [ filmsData, setFilmsData ] = useState([]);
-    const [ filmsAreLoaded, setFilmsAreLoaded ] = useState(false);
+    const [ filmsGotLoaded, setFilmsGotLoaded ] = useState(false);
   
     const getFilmsArray = () => {
-        setFilmsAreLoaded(false);
         person.films.forEach((film)=>{
-            getFilm(film, filmsData, setFilmsData);
+        getFilm(film, filmsData, setFilmsData);
         })
-        setFilmsAreLoaded(true);
 
     }
 
     const handlePersonInfoClick = () => {
-        console.log("im in handler")
+        setFilmsGotLoaded(false);
         setFilmsData([]);
         getFilmsArray();
-      
-
+        setFilmsGotLoaded(true);
+        renderFilmDetails(filmsGotLoaded,filmsData);  
+        
     }
 
-    
+useEffect(()=>{
+    getPlanet(person, setPlanetData);
+},[peopleData, currentPage])
 
-    const renderFilmDetails = () => {
-        console.log(filmsData)
-        return <div>{filmsData[0]?.title}</div>
-    }
-
-    useEffect(()=>{
-       getPlanet(person, setPlanetData)
-    },[peopleData, currentPage])
-
-   useEffect(()=>{
-    if(filmsAreLoaded == true) {
-        renderFilmDetails()
-        console.log("im in if")
-    }
-   },[filmsAreLoaded])
-    
-
+  
 return  (
-    <div className='person-info__container' onClick={handlePersonInfoClick}>
-        <div className='person-info__element'>{person.name}</div>
-        <div className='person-info__element'>{planetData.name}</div>
-        <div className='person-info__element'>{planetData.population}</div>
-        {renderFilmDetails}
-    </div>
+    <>
+    <ul className='person-info__container' onClick={handlePersonInfoClick}>
+        <PersonInfoElement personProperty={person.name}/>
+        <PersonInfoElement personProperty={planetData.name}/>
+        <PersonInfoElement personProperty={planetData.population}/>
+    </ul>
+    {renderFilmDetails(person.name, filmsGotLoaded, filmsData)}
+    </>
 )}
 
 export default SingleResult;
