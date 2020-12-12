@@ -6,6 +6,9 @@
     padding: $padding-base;
     flex: 1;
    
+    @include mediumScreen{
+        display: none;
+    }
 }
 
 

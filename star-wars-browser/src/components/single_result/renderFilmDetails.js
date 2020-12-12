@@ -1,13 +1,23 @@
 import FilmDetailsElement from '../film_details_element';
 
-const renderFilmDetails = (characterAttended, filmsGotLoaded, filmsData) => {
+const renderFilmDetails = (characterAttended, filmsGotLoaded, filmsData, isOpened, setIsOpened) => {
 
-    if(filmsGotLoaded === true) {
+    const handleModalMaskClick = () => {
+        setIsOpened(true)
+    }
+
+    const handleCloseButtonClick = () => {
+        setIsOpened(true);
+    }
+
+    if(filmsGotLoaded === true && !isOpened) {
         return (
             <>
             <ul className='film-details__list'>
                 <div className='ui__container'>
                     <span className='character-attended__span'>{characterAttended} attended in</span>
+                    <button className='close__button' onClick={handleCloseButtonClick}>X</button>
+
                 </div>
                     {filmsData?.map((film) => {
                      return (
@@ -18,9 +28,7 @@ const renderFilmDetails = (characterAttended, filmsGotLoaded, filmsData) => {
                          </>
                     )})}
             </ul>
-            <div className='modal__mask' onClick={()=>{
-                
-            }}/>
+            <div className='modal__mask' onClick={handleModalMaskClick}/>
             </>
         )
     }
