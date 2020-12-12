@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/recruitment-task-bpol/static/css/main.2f6512a1.chunk.css",
-    "main.js": "/recruitment-task-bpol/static/js/main.a819c484.chunk.js",
-    "main.js.map": "/recruitment-task-bpol/static/js/main.a819c484.chunk.js.map",
+    "main.js": "/recruitment-task-bpol/static/js/main.af99eb5c.chunk.js",
+    "main.js.map": "/recruitment-task-bpol/static/js/main.af99eb5c.chunk.js.map",
     "runtime-main.js": "/recruitment-task-bpol/static/js/runtime-main.cc56fd63.js",
     "runtime-main.js.map": "/recruitment-task-bpol/static/js/runtime-main.cc56fd63.js.map",
     "static/js/2.f2302a79.chunk.js": "/recruitment-task-bpol/static/js/2.f2302a79.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.cc56fd63.js",
     "static/js/2.f2302a79.chunk.js",
     "static/css/main.2f6512a1.chunk.css",
-    "static/js/main.a819c484.chunk.js"
+    "static/js/main.af99eb5c.chunk.js"
   ]
 }
