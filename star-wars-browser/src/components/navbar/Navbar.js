@@ -7,12 +7,11 @@ import swImage from '../../assets/star-wars-logo.png';
 
 const Navbar = () => {
     return (
-        <div className='navbar__container'>    
+        <header className='navbar__container'>    
             <Search/>
-            <Logo logoImage={swImage}/>
-        </div>
+            <Logo logoImage={ swImage }/>
+        </header>
     )
 }
 
 export default Navbar;
-

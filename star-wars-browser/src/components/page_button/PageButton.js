@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-const PageButton = ({number,setCurrentPage}) => {
+const PageButton = ({ number, setCurrentPage }) => {
 
     const handlePageClick = (event) => {
         setCurrentPage(Number(event.target.id));
@@ -9,10 +9,10 @@ const PageButton = ({number,setCurrentPage}) => {
 
     return (
         <li className='page-changing__button'
-            key={number}
-            id={number}
-            onClick={handlePageClick}>
-            {number}
+            key={ number }
+            id={ number }
+            onClick={ handlePageClick }>
+            { number }
         </li>
     )
 

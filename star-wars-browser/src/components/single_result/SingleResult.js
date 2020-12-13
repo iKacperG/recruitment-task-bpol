@@ -7,10 +7,10 @@ import getPlanet from './getPlanet';
 import getFilm from './getFilm';
 import renderFilmDetails from './renderFilmDetails';
 
-import FilmDetailsElement from '../film_details_element';
 import PersonInfoElement from '../person_info_element';
 
-const SingleResult = ({person}) => {
+const SingleResult = ({ person }) => {
+
     const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
     const { peopleData, setPeopleData } = useContext(PeopleDataContext);
 
@@ -27,7 +27,7 @@ const SingleResult = ({person}) => {
     }
 
     const handlePersonInfoClick = () => {
-        setIsOpened(false)
+        setIsOpened(false);
         setFilmsGotLoaded(false);
         setFilmsData([]);
         getFilmsArray();
@@ -38,15 +38,15 @@ const SingleResult = ({person}) => {
 
 useEffect(()=>{
     getPlanet(person, setPlanetData);
-},[peopleData, currentPage])
+},[peopleData, currentPage]);
 
   
 return  (
     <>
-    <ul className='person-info__container' onClick={handlePersonInfoClick}>
-        <PersonInfoElement personProperty={person.name}/>
-        <PersonInfoElement personProperty={planetData.name}/>
-        <PersonInfoElement personProperty={planetData.population}/>
+    <ul className='person-info__container' onClick={ handlePersonInfoClick}>
+        <PersonInfoElement personProperty={ person.name }/>
+        <PersonInfoElement personProperty={ planetData.name }/>
+        <PersonInfoElement personProperty={ planetData.population }/>
     </ul>
     {renderFilmDetails(person.name, filmsGotLoaded, filmsData, isOpened, setIsOpened)}
     </>

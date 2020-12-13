@@ -1,14 +1,9 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 
 import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext';
 import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
 
 import getPeople from './getPeople';
-
-import { useState, useContext } from 'react'
-
-
-
 
 const Search = () => {
 
@@ -32,8 +27,8 @@ const handleSearchInputChange = (event) => {
 
     return (
         <div className='search__container'>
-            <form className='search__form' onSubmit={handleSearchButtonSubmit}>
-                <input className ='search__input' value={typedSearchQuery} onChange={handleSearchInputChange} placeholder='search for your fav movie'/>
+            <form className='search__form' onSubmit={ handleSearchButtonSubmit }>
+                <input className ='search__input' value={ typedSearchQuery } onChange={ handleSearchInputChange } placeholder='search for your fav character'/>
                 <button className='search__button'/>
             </form>
         </div>
