@@ -3,8 +3,7 @@ import React from 'react';
 import CurrentPageProvider from '../../providers/currentPage/CurrentPageProvider';
 
 import Navbar from '../navbar';
-import SearchResultsModal from '../search_results_modal';
-import Footer from '../footer';
+import SearchResultsModal from '../search_results';
 
 const Home = () => {
     return (
@@ -13,10 +12,8 @@ const Home = () => {
                 <Navbar/>
                 <SearchResultsModal/>
             </CurrentPageProvider>
-            <Footer/>
         </div>
     )
 }
 
 export default Home;
-

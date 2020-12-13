@@ -1,24 +1,23 @@
 .film-details__list-element{
     display: flex;
     align-items: flex-start;
-   
+    border-bottom: 2px solid $color-primary;
 
     .film-details__content{
-        list-style:none;
         display: flex;
+        list-style:none;
+        padding: $padding-base;
         color: white;
         text-align: center;
-        padding: $padding-base;
         font-family: $font-primary;
-        font-size: $base-font-size;
     }
 
     .film-details__label{
         @include starWarsLetters;
-        font-size: $base-font-size;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        font-size: $font-size-base;
     }
 }
 

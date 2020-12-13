@@ -1,5 +1,6 @@
-import Home from './components/home';
 import PeopleDataProvider from './providers/peopleData/PeopleDataProvider';
+
+import Home from './components/home';
 
 import './scss/main.scss';
 

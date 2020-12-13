@@ -2,18 +2,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    background: $color-transparent-background;
-    color: $color-secondary;
-    font-size: $base-font-size;
-    text-shadow: -1px 0 $color-primary, 0 1px $color-primary, 1px 0 $color-primary, 0 -1px $color-primary;
     flex: 1;
-    font-weight: bold;
-    margin: 0 $margin-base;
     width: 2rem;
     height: 2rem;
-
-
+    background: $color-transparent-background;
+    margin: 0 $margin-base;
+    padding: $padding-base;
+    color: $color-secondary;
+    font-size: $font-size-base;
+    font-weight: bold;
+    text-shadow: -1px 0 $color-primary, 0 1px $color-primary, 1px 0 $color-primary, 0 -1px $color-primary;
 
         &:hover{
         transition: 0.3;

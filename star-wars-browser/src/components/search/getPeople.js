@@ -1,5 +1,7 @@
 const getPeople = async (typedSearchQuery, setPeopleData, peopleData) => {
+
     let peopleArray = [];
+    
     console.log("Getting data")
     let response = await fetch(`https://swapi.dev/api/people/?search=${typedSearchQuery}`);
     let data = await response.json();
