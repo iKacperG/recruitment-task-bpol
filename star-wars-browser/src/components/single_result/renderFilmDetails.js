@@ -15,8 +15,8 @@ const renderFilmDetails = (characterAttended, filmsGotLoaded, filmsData, isOpene
             <>
             <ul className='film-details__list'>
                 <div className='ui__container'>
-                    <span className='character-attended__span'>{characterAttended} attended in</span>
-                    <button className='close__button' onClick={handleCloseButtonClick}>X</button>
+                    <span className='character-attended__span'>{ characterAttended } attended in</span>
+                    <button className='close__button' onClick={ handleCloseButtonClick }>X</button>
 
                 </div>
                     {filmsData?.map((film) => {
