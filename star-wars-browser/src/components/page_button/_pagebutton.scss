@@ -1,21 +1,22 @@
-.page-changing__button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    width: 2rem;
-    height: 2rem;
-    background: $color-transparent-background;
-    margin: 0 $margin-base;
-    padding: $padding-base;
-    color: $color-secondary;
-    font-size: $font-size-base;
-    font-weight: bold;
-    text-shadow: -1px 0 $color-primary, 0 1px $color-primary, 1px 0 $color-primary, 0 -1px $color-primary;
+.page-changing__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  width: 2rem;
+  height: 2rem;
+  background: $color-transparent-background;
+  margin: 0 $margin-base;
+  padding: $padding-base;
+  color: $color-secondary;
+  font-size: $font-size-base;
+  font-weight: bold;
+  text-shadow: -1px 0 $color-primary, 0 1px $color-primary, 1px 0 $color-primary,
+    0 -1px $color-primary;
 
-        &:hover{
-        transition: 0.3;
-        background: lighten($color-transparent-background,40%);
-        cursor: pointer;
-    }
+  &:hover {
+    transition: 0.3;
+    background: lighten($color-transparent-background, 40%);
+    cursor: pointer;
+  }
 }

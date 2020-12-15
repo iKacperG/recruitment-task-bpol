@@ -1,26 +1,22 @@
-.film-details__list-element{
+.film-details__list-element {
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 2px solid $color-primary;
+
+  .film-details__content {
     display: flex;
-    align-items: flex-start;
-    border-bottom: 2px solid $color-primary;
+    list-style: none;
+    padding: $padding-base;
+    color: white;
+    text-align: center;
+    font-family: $font-primary;
+  }
 
-    .film-details__content{
-        display: flex;
-        list-style:none;
-        padding: $padding-base;
-        color: white;
-        text-align: center;
-        font-family: $font-primary;
-    }
-
-    .film-details__label{
-        @include starWarsLetters;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        font-size: $font-size-base;
-    }
+  .film-details__label {
+    @include starWarsLetters;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: $font-size-base;
+  }
 }
-
-
-
-

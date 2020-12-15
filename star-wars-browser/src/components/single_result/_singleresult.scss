@@ -1,63 +1,59 @@
-.person-info__container{
-    transition: 0.3;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: $color-transparent-background;
-    margin: $margin-base;
-    font-family: $font-primary;
+.person-info__container {
+  transition: 0.3;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: $color-transparent-background;
+  margin: $margin-base;
+  font-family: $font-primary;
 
-    &:hover{
+  &:hover {
     transition: 0.3;
-    background: lighten($color-transparent-background,40%);
+    background: lighten($color-transparent-background, 40%);
     cursor: pointer;
-    
-    }
+  }
 }
 
-.film-details__list{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 3;
-    overflow: auto;
-    background: $color-secondary;
-    border: 0.5rem solid $color-primary;
-    border-radius: 2%;
-    
-    @include mediumScreen{
-        width: 80%;
-        height: 80%;
-    }
+.film-details__list {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  overflow: auto;
+  background: $color-secondary;
+  border: 0.5rem solid $color-primary;
+  border-radius: 2%;
+
+  @include mediumScreen {
+    width: 80%;
+    height: 80%;
+  }
 }
 
-.character-attended__span{
-    @include starWarsLetters;
+.character-attended__span {
+  @include starWarsLetters;
 }
 
-.modal__mask{
-    width: 100%;
-    height: 100vh;
-    position:absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    background: darken($color-transparent-background, 100%);
-    
+.modal__mask {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: darken($color-transparent-background, 100%);
 }
 
+.ui__container {
+  display: flex;
 
-.ui__container{
-
-    display: flex;
-
-    .close__button{
+  .close__button {
     background: $color-primary;
     color: $color-secondary;
-    }
+  }
 }
