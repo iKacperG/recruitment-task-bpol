@@ -1,24 +1,20 @@
 const getFilmProperty = (filmProperty, shrinkable, maxCharacters) => {
+  let letterCount = 0;
 
-    let letterCount = 0; 
+  if (shrinkable === true) {
+    const filmPropertyShrinked = filmProperty
+      .split(" ")
+      .map((word) => {
+        letterCount += word.length;
 
-    if(shrinkable===true){
-        const filmPropertySplitted = filmProperty.split(" ");
-        const filmPropertyShrinked = filmPropertySplitted.map((word)=>{
+        if (letterCount < maxCharacters) {
+          return word;
+        } else return null;
+      })
+      .join(" ");
 
-        letterCount+=word.length;
-
-        if(letterCount<maxCharacters){
-             return word;
-        }
-         else return null
-        })
-
-        const filmPropertyJoined = filmPropertyShrinked.join(" ");
-
-        return filmPropertyJoined + "(...)";
-
-     } else return filmProperty;
-}
+    return filmPropertyShrinked + "(...)";
+  } else return filmProperty;
+};
 
 export default getFilmProperty;

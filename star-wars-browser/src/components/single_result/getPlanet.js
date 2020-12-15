@@ -1,9 +1,8 @@
 const getPlanet = async (person, setPlanetData) => {
-    let response = await fetch(person.homeworld);
-    let data = await response.json();
-    setPlanetData(data);
-
-}
+  let response = await fetch(person.homeworld);
+  let data = await response.json();
+  setPlanetData(data);
+};
 
 export default getPlanet;
 

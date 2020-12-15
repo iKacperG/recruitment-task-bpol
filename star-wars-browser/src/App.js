@@ -1,15 +1,15 @@
-import PeopleDataProvider from './providers/peopleData/PeopleDataProvider';
+import PeopleDataProvider from "./providers/peopleData/PeopleDataProvider";
 
-import Home from './components/home';
+import Home from "./components/home";
 
-import './scss/main.scss';
+import "./scss/main.scss";
 
 function App() {
   return (
     <PeopleDataProvider>
-    <div className="App">
-      <Home/>
-    </div>
+      <div className="App">
+        <Home />
+      </div>
     </PeopleDataProvider>
   );
 }

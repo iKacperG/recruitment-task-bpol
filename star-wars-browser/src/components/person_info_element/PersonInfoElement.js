@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 const PersonInfoElement = ({ personProperty }) => {
-    return  <li className='person-info__element'>{ personProperty }</li>
-}
+  return <li className="person-info__element">{personProperty}</li>;
+};
 
 export default PersonInfoElement;

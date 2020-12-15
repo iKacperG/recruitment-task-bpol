@@ -1,3 +1,3 @@
-import PersonInfoElement from './PersonInfoElement';
+import PersonInfoElement from "./PersonInfoElement";
 
 export default PersonInfoElement;

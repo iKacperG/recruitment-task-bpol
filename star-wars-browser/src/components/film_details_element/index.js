@@ -1,3 +1,3 @@
-import FilmDetailsElement from './FilmDetailsElement';
+import FilmDetailsElement from "./FilmDetailsElement";
 
 export default FilmDetailsElement;

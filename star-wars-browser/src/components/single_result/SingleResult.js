@@ -1,55 +1,56 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from "react";
 
-import { CurrentPageContext } from '../../providers/currentPage/CurrentPageContext';
-import { PeopleDataContext } from '../../providers/peopleData/PeopleDataContext';
+import { CurrentPageContext } from "../../providers/currentPage/CurrentPageContext";
 
-import getPlanet from './getPlanet';
-import getFilm from './getFilm';
-import renderFilmDetails from './renderFilmDetails';
+import getPlanet from "./getPlanet";
+import getFilm from "./getFilm";
+import renderFilmDetails from "./renderFilmDetails";
 
-import PersonInfoElement from '../person_info_element';
+import PersonInfoElement from "../person_info_element";
 
 const SingleResult = ({ person }) => {
+  const { currentPage } = useContext(CurrentPageContext);
 
-    const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
-    const { peopleData, setPeopleData } = useContext(PeopleDataContext);
+  const [planetData, setPlanetData] = useState("");
+  const [filmsData, setFilmsData] = useState([]);
+  const [filmsGotLoaded, setFilmsGotLoaded] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
 
-    const [ planetData, setPlanetData ] = useState("");
-    const [ filmsData, setFilmsData ] = useState([]);
-    const [ filmsGotLoaded, setFilmsGotLoaded ] = useState(false);
-    const [ isOpened, setIsOpened ] = useState(false);
-  
-    const getFilmsArray = () => {
-        person.films.forEach((film)=>{
-        getFilm(film, filmsData, setFilmsData);
-        })
+  const getFilmsArray = () => {
+    person.films.forEach((film) => {
+      getFilm(film, setFilmsData);
+    });
+  };
 
-    }
+  const handlePersonInfoClick = () => {
+    setIsOpened(false);
+    setFilmsGotLoaded(false);
+    setFilmsData([]);
+    getFilmsArray();
+    setFilmsGotLoaded(true);
+    renderFilmDetails(filmsGotLoaded, filmsData, isOpened, setIsOpened);
+  };
 
-    const handlePersonInfoClick = () => {
-        setIsOpened(false);
-        setFilmsGotLoaded(false);
-        setFilmsData([]);
-        getFilmsArray();
-        setFilmsGotLoaded(true);
-        renderFilmDetails(filmsGotLoaded,filmsData, isOpened, setIsOpened);  
-        
-    }
-
-useEffect(()=>{
+  useEffect(() => {
     getPlanet(person, setPlanetData);
-},[peopleData, currentPage]);
+  }, [person, currentPage]);
 
-  
-return  (
+  return (
     <>
-    <ul className='person-info__container' onClick={ handlePersonInfoClick}>
-        <PersonInfoElement personProperty={ person.name }/>
-        <PersonInfoElement personProperty={ planetData.name }/>
-        <PersonInfoElement personProperty={ planetData.population }/>
-    </ul>
-    {renderFilmDetails(person.name, filmsGotLoaded, filmsData, isOpened, setIsOpened)}
+      <ul className="person-info__container" onClick={handlePersonInfoClick}>
+        <PersonInfoElement personProperty={person.name} />
+        <PersonInfoElement personProperty={planetData.name} />
+        <PersonInfoElement personProperty={planetData.population} />
+      </ul>
+      {renderFilmDetails(
+        person.name,
+        filmsGotLoaded,
+        filmsData,
+        isOpened,
+        setIsOpened
+      )}
     </>
-)}
+  );
+};
 
 export default SingleResult;
