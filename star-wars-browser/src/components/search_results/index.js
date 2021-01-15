@@ -1,3 +1,3 @@
-import SearchResultsModal from "./SearchResults";
+import SearchResultsModal from './SearchResults';
 
 export default SearchResultsModal;

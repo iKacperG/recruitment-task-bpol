@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { PeopleDataContext } from "./PeopleDataContext";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import PeopleDataContext from './PeopleDataContext';
+
 const PeopleDataProvider = ({ children }) => {
   const [peopleData, setPeopleData] = useState([[]]);
 
@@ -8,6 +10,10 @@ const PeopleDataProvider = ({ children }) => {
       {children}
     </PeopleDataContext.Provider>
   );
+};
+
+PeopleDataProvider.propTypes = {
+  children: PropTypes.func.isRequired,
 };
 
 export default PeopleDataProvider;

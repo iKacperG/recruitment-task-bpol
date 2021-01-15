@@ -3,18 +3,18 @@ const getFilmProperty = (filmProperty, shrinkable, maxCharacters) => {
 
   if (shrinkable === true) {
     const filmPropertyShrinked = filmProperty
-      .split(" ")
+      .split(' ')
       .map((word) => {
         letterCount += word.length;
 
         if (letterCount < maxCharacters) {
           return word;
-        } else return null;
+        } return null;
       })
-      .join(" ");
+      .join(' ');
 
-    return filmPropertyShrinked + "(...)";
-  } else return filmProperty;
+    return `${filmPropertyShrinked}(...)`;
+  } return filmProperty;
 };
 
 export default getFilmProperty;

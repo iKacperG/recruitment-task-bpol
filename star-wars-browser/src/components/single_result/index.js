@@ -1,3 +1,3 @@
-import SingleResult from "./SingleResult";
+import SingleResult from './SingleResult';
 
 export default SingleResult;

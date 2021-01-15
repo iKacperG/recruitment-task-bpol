@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from 'react';
 
-import { PeopleDataContext } from "../../providers/peopleData/PeopleDataContext";
-import { CurrentPageContext } from "../../providers/currentPage/CurrentPageContext";
+import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
+import CurrentPageContext from '../../providers/currentPage/CurrentPageContext';
 
-import SingleResult from "../single_result";
-import paginate from "./paginate";
+import SingleResult from '../single_result';
+import paginate from './Paginate';
 
 const SearchResults = () => {
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { peopleData } = useContext(PeopleDataContext);
 
   const [labelClassName, setLabelClassName] = useState(
-    "search-results-label__list d-none"
+    'search-results-label__list d-none',
   );
 
   const pagination = paginate(currentPage, setCurrentPage, peopleData);
 
   useEffect(() => {
-    if (peopleData.length > 1) setLabelClassName("search-results-label__list");
+    if (peopleData.length > 1) setLabelClassName('search-results-label__list');
   }, [peopleData]);
 
   return (
@@ -29,7 +29,7 @@ const SearchResults = () => {
       </ul>
       <ul>
         {pagination.currentCharactersPage?.map((person) => (
-          <SingleResult person={person}/>
+          <SingleResult person={person} />
         ))}
       </ul>
 

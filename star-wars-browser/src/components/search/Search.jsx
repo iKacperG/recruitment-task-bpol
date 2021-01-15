@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import { PeopleDataContext } from "../../providers/peopleData/PeopleDataContext";
-import { CurrentPageContext } from "../../providers/currentPage/CurrentPageContext";
+import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
+import CurrentPageContext from '../../providers/currentPage/CurrentPageContext';
 
-import getPeople from "./getPeople";
+import getPeople from './getPeople';
 
 const Search = () => {
   const { setCurrentPage } = useContext(CurrentPageContext);
   const { setPeopleData } = useContext(PeopleDataContext);
 
-  const [typedSearchQuery, setTypedSearchQuery] = useState("");
+  const [typedSearchQuery, setTypedSearchQuery] = useState('');
 
   const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +30,11 @@ const Search = () => {
           onChange={handleSearchInputChange}
           placeholder="search for your fav character"
         />
-        <button className="search__button" />
+        <button
+          type="button"
+          className="search__button"
+          aria-label="search"
+        />
       </form>
     </div>
   );
