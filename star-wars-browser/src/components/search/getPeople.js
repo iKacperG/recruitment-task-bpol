@@ -10,8 +10,8 @@ const getPeople = async (typedSearchQuery, setPeopleData) => {
 
   while (data.next != null) {
     console.log('getting next page', data.next);
-    response = await fetch(data.next);
-    data = await response.json();
+    response = await fetch(data.next); // eslint-disable-line no-await-in-loop
+    data = await response.json(); // eslint-disable-line no-await-in-loop
     peopleArray.push(data.results);
   }
   peopleArray.push(data.results);
