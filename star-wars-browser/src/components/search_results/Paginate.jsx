@@ -1,9 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PageButton from '../page_button';
 
-const paginate = (currentPage, setCurrentPage, peopleData) => {
+const paginate = (peopleData) => {
+  const page = useSelector((state) => state.page);
   const characterClustersPerPage = 1;
-  const currentCharactersPage = peopleData[currentPage - 1];
+  const currentCharactersPage = peopleData[page - 1];
   const pageNumbers = [];
 
   for (
@@ -16,7 +18,7 @@ const paginate = (currentPage, setCurrentPage, peopleData) => {
 
   const renderPageNumbers = pageNumbers.map((number) => {
     if (pageNumbers.length !== 1) {
-      return <PageButton number={number} setCurrentPage={setCurrentPage} />;
+      return <PageButton number={number} />;
     } return null;
   });
 

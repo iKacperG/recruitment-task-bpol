@@ -1,19 +1,19 @@
 import React, { useState, useContext } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { change } from '../../actions';
 import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
-import CurrentPageContext from '../../providers/currentPage/CurrentPageContext';
 
 import getPeople from './getPeople';
 
 const Search = () => {
-  const { setCurrentPage } = useContext(CurrentPageContext);
   const { setPeopleData } = useContext(PeopleDataContext);
+  const dispatch = useDispatch();
 
   const [typedSearchQuery, setTypedSearchQuery] = useState('');
 
   const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
-    setCurrentPage(1);
+    dispatch(change(1));
     getPeople(typedSearchQuery, setPeopleData);
   };
 

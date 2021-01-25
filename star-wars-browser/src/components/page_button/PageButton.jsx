@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { change } from '../../actions';
 
-const PageButton = ({ number, setCurrentPage }) => {
+const PageButton = ({ number }) => {
+  const dispatch = useDispatch();
   const handlePageButtonClick = (event) => {
-    setCurrentPage(Number(event.target.id));
+    dispatch(change(Number(event.target.id)));
   };
 
   return (
@@ -24,13 +27,9 @@ const PageButton = ({ number, setCurrentPage }) => {
 
 PageButton.defaultProps = {
   number: 1,
-  setCurrentPage: () => {
-    console.log('function working');
-  },
 };
 
 PageButton.propTypes = {
   number: PropTypes.number,
-  setCurrentPage: PropTypes.func,
 };
 export default PageButton;

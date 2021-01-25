@@ -1,7 +1,5 @@
 import React from 'react';
-
 import CurrentPageProvider from '../../providers/currentPage/CurrentPageProvider';
-
 import Navbar from '../navbar';
 import SearchResultsModal from '../search_results';
 
