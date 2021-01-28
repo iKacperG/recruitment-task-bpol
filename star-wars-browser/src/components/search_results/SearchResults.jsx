@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-
+import { useSelector } from 'react-redux';
 import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
-
 import SingleResult from '../single_result';
-import paginate from './Paginate';
+import Paginate from './Paginate';
+import { getPageNumber } from '../../store/pagination/selectors';
 
 const SearchResults = () => {
   const { peopleData } = useContext(PeopleDataContext);
@@ -11,8 +11,8 @@ const SearchResults = () => {
   const [labelClassName, setLabelClassName] = useState(
     'search-results-label__list d-none',
   );
-
-  const pagination = paginate(peopleData);
+  const page = useSelector(getPageNumber);
+  const currentCharactersPage = peopleData[page - 1];
 
   useEffect(() => {
     if (peopleData.length > 1) setLabelClassName('search-results-label__list');
@@ -26,13 +26,13 @@ const SearchResults = () => {
         <li className="search-results-label__element">Population</li>
       </ul>
       <ul>
-        {pagination.currentCharactersPage?.map((person) => (
+        {currentCharactersPage?.map((person) => (
           <SingleResult person={person} />
         ))}
       </ul>
 
       <ul className="page-changing__container">
-        {pagination.renderPageNumbers}
+        <Paginate peopleData={peopleData} />
       </ul>
     </>
   );

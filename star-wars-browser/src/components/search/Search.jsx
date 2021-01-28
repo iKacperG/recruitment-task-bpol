@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { change } from '../../actions';
+import { changePage } from '../../store/pagination/actions';
 import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
 
 import getPeople from './getPeople';
@@ -13,7 +13,7 @@ const Search = () => {
 
   const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
-    dispatch(change(1));
+    dispatch(changePage(1));
     getPeople(typedSearchQuery, setPeopleData);
   };
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { change } from '../../actions';
+import { changePage } from '../../store/pagination/actions';
 
 const PageButton = ({ number }) => {
   const dispatch = useDispatch();
   const handlePageButtonClick = (event) => {
-    dispatch(change(Number(event.target.id)));
+    dispatch(changePage(Number(event.target.id)));
   };
 
   return (
