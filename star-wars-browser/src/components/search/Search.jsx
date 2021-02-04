@@ -1,12 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changePage } from '../../store/pagination/actions';
-import PeopleDataContext from '../../providers/peopleData/PeopleDataContext';
 
 import getPeople from './getPeople';
 
-const Search = () => {
-  const { setPeopleData } = useContext(PeopleDataContext);
+// eslint-disable-next-line react/prop-types
+const Search = ({ setPeopleData }) => {
   const dispatch = useDispatch();
 
   const [typedSearchQuery, setTypedSearchQuery] = useState('');

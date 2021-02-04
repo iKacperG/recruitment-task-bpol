@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const initialState = { pageNumber: 1 };
+export const initialState = { dataProvided: [] };

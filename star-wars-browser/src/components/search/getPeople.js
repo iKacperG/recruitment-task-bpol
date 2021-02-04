@@ -15,7 +15,7 @@ const getPeople = async (typedSearchQuery, setPeopleData) => {
     peopleArray.push(data.results);
   }
   peopleArray.push(data.results);
-
+  console.log('tu jestem');
   setPeopleData(peopleArray);
 };
 

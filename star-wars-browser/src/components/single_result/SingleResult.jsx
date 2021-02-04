@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
-import CurrentPageContext from '../../providers/currentPage/CurrentPageContext';
 
 import getPlanet from './getPlanet';
 import getFilm from './getFilm';
@@ -9,9 +7,7 @@ import renderFilmDetails from './renderFilmDetails';
 
 import PersonInfoElement from '../person_info_element';
 
-const SingleResult = ({ person }) => {
-  const { currentPage } = useContext(CurrentPageContext);
-
+const SingleResult = ({ person, pageNumber }) => {
   const [planetData, setPlanetData] = useState('');
   const [filmsData, setFilmsData] = useState([]);
   const [filmsGotLoaded, setFilmsGotLoaded] = useState(false);
@@ -34,7 +30,7 @@ const SingleResult = ({ person }) => {
 
   useEffect(() => {
     getPlanet(person, setPlanetData);
-  }, [person, currentPage]);
+  }, [person, pageNumber]);
 
   return (
     <>
@@ -63,10 +59,12 @@ const SingleResult = ({ person }) => {
 
 SingleResult.defaultProps = {
   person: 'person',
+  pageNumber: 1,
 };
 
 SingleResult.propTypes = {
   person: PropTypes.string,
+  pageNumber: PropTypes.number,
 };
 
 export default SingleResult;

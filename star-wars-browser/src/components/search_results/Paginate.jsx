@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PageButton from '../page_button';
 
 const Paginate = ({ peopleData }) => {
@@ -19,6 +20,14 @@ const Paginate = ({ peopleData }) => {
       )}
     </>
   );
+};
+
+Paginate.defaultProps = {
+  peopleData: [],
+};
+
+Paginate.propTypes = {
+  peopleData: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default Paginate;

@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { increment, decrement, changePage } from './actions';
-
-const initialState = { pageNumber: 1 };
+import { initialState } from './defaultState';
 
 const pageReducer = createReducer(initialState, (builder) => {
   builder
