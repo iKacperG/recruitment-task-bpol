@@ -32,4 +32,5 @@ PageButton.defaultProps = {
 PageButton.propTypes = {
   number: PropTypes.number,
 };
+
 export default PageButton;

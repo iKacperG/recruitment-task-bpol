@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import pageReducer from './pagination/reducer';
-import peopleDataReducer from './peopleData/reducer';
+import peopleReducer from './peopleData/reducer';
 
 const rootReducer = combineReducers({
   pagination: pageReducer,
-  peopleData: peopleDataReducer,
+  peopleData: peopleReducer,
 });
 
 export default rootReducer;

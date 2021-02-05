@@ -4,7 +4,6 @@ import SingleResult from '../single_result';
 import Paginate from './Paginate';
 
 const SearchResults = ({ pageNumber, changePage, peopleData }) => {
-
   const [labelClassName, setLabelClassName] = useState(
     'search-results-label__list d-none',
   );
@@ -37,13 +36,15 @@ const SearchResults = ({ pageNumber, changePage, peopleData }) => {
 };
 
 SearchResults.defaultProps = {
-  pageNumber: () => 1,
-  changePage: () => console.log('working'),
+  pageNumber: 1,
+  changePage: () => {},
+  peopleData: [],
 };
 
 SearchResults.propTypes = {
   pageNumber: PropTypes.number,
   changePage: PropTypes.func,
+  peopleData: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default SearchResults;
