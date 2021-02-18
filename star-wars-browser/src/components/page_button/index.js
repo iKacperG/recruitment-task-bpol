@@ -1,3 +1,3 @@
-import PageButton from "./PageButton";
+import PageButton from './PageButton';
 
 export default PageButton;

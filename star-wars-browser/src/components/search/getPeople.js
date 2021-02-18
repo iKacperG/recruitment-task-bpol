@@ -1,21 +1,24 @@
-const getPeople = async (typedSearchQuery, setPeopleData, peopleData) => {
-  let peopleArray = [];
+import { SWAPI_ADDRESS } from '../../config';
 
-  console.log("Getting data");
+const getPeople = async (typedSearchQuery, setPeopleData) => {
+  const peopleArray = [];
+
+  console.log('Getting data');
   let response = await fetch(
-    `https://swapi.dev/api/people/?search=${typedSearchQuery}`
+    `${SWAPI_ADDRESS}${typedSearchQuery}`,
   );
   let data = await response.json();
   peopleArray.push(data.results);
 
   while (data.next != null) {
-    console.log("getting next page", data.next);
+    console.log('getting next page', data.next);
+    // eslint-disable-next-line no-await-in-loop
     response = await fetch(data.next);
+    // eslint-disable-next-line no-await-in-loop
     data = await response.json();
     peopleArray.push(data.results);
   }
   peopleArray.push(data.results);
-
   setPeopleData(peopleArray);
 };
 

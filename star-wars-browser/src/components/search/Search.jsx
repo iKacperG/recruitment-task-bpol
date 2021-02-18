@@ -1,19 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { changePage } from '../../store/pagination/actions';
 
-import { PeopleDataContext } from "../../providers/peopleData/PeopleDataContext";
-import { CurrentPageContext } from "../../providers/currentPage/CurrentPageContext";
+import getPeople from './getPeople';
 
-import getPeople from "./getPeople";
+// eslint-disable-next-line react/prop-types
+const Search = ({ setPeopleData }) => {
+  const dispatch = useDispatch();
 
-const Search = () => {
-  const { setCurrentPage } = useContext(CurrentPageContext);
-  const { setPeopleData } = useContext(PeopleDataContext);
-
-  const [typedSearchQuery, setTypedSearchQuery] = useState("");
+  const [typedSearchQuery, setTypedSearchQuery] = useState('');
 
   const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
-    setCurrentPage(1);
+    dispatch(changePage(1));
     getPeople(typedSearchQuery, setPeopleData);
   };
 
@@ -30,7 +29,11 @@ const Search = () => {
           onChange={handleSearchInputChange}
           placeholder="search for your fav character"
         />
-        <button className="search__button" />
+        <button
+          type="button"
+          className="search__button"
+          aria-label="search"
+        />
       </form>
     </div>
   );

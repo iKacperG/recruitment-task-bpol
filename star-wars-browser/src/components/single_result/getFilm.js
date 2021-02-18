@@ -1,6 +1,6 @@
 const getFilm = async (film, setFilmsData) => {
-  let response = await fetch(film);
-  let data = await response.json();
+  const response = await fetch(film);
+  const data = await response.json();
   setFilmsData((prev) => [...prev, data]);
 };
 
