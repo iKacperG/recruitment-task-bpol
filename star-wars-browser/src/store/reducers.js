@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import pageReducer from './pagination/reducer';
-import peopleReducer from './peopleData/reducer';
+import peopleReducer from './people/reducer';
+import filmReducer from './films/reducer';
+import planetsReducer from './planets/reducer';
 
 const rootReducer = combineReducers({
   pagination: pageReducer,
-  peopleData: peopleReducer,
+  people: peopleReducer,
+  films: filmReducer,
+  planets: planetsReducer,
 });
 
 export default rootReducer;
