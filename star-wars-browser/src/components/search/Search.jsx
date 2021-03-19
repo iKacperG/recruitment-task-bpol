@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changePage } from '../../store/pagination/actions';
 
-import getPeople from './getPeople';
-
 // eslint-disable-next-line react/prop-types
-const Search = ({ setPeopleData }) => {
+const Search = ({ fetchPeople }) => {
   const dispatch = useDispatch();
 
   const [typedSearchQuery, setTypedSearchQuery] = useState('');
@@ -13,7 +11,7 @@ const Search = ({ setPeopleData }) => {
   const handleSearchButtonSubmit = (event) => {
     event.preventDefault();
     dispatch(changePage(1));
-    getPeople(typedSearchQuery, setPeopleData);
+    fetchPeople();
   };
 
   const handleSearchInputChange = (event) => {

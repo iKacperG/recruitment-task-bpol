@@ -1,36 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import getPlanet from './getPlanet';
-import getFilm from './getFilm';
-import renderFilmDetails from './renderFilmDetails';
+import RenderFilmDetails from './RenderFilmDetails';
 
 import PersonInfoElement from '../person_info_element';
+/* eslint react/prop-types: 0 */
 
-const SingleResult = ({ person, pageNumber }) => {
-  const [planetData, setPlanetData] = useState('');
-  const [filmsData, setFilmsData] = useState([]);
-  const [filmsGotLoaded, setFilmsGotLoaded] = useState(false);
+const SingleResult = ({
+  person,
+  fetchFilms,
+  films,
+  planet,
+  fetchPlanets,
+  filmUrl,
+}) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const getFilmsArray = () => {
     person.films.forEach((film) => {
-      getFilm(film, setFilmsData);
+      if (!(film in films)) {
+        fetchFilms(film);
+      }
     });
   };
 
   const handlePersonInfoClick = () => {
-    setIsOpened(false);
-    setFilmsGotLoaded(false);
-    setFilmsData([]);
     getFilmsArray();
-    setFilmsGotLoaded(true);
-    renderFilmDetails(filmsGotLoaded, filmsData, isOpened, setIsOpened);
+    setIsOpened(true);
   };
 
   useEffect(() => {
-    getPlanet(person, setPlanetData);
-  }, [person, pageNumber]);
+    if (!planet) {
+      fetchPlanets(person);
+    }
+  }, [planet, fetchPlanets]);
+
+  if (!planet) {
+    return <div>Loading ...</div>;
+  }
 
   return (
     <>
@@ -43,28 +50,26 @@ const SingleResult = ({ person, pageNumber }) => {
         tabIndex={-1}
       >
         <PersonInfoElement personProperty={person.name} />
-        <PersonInfoElement personProperty={planetData.name} />
-        <PersonInfoElement personProperty={planetData.population} />
+        <PersonInfoElement personProperty={planet.name} />
+        <PersonInfoElement personProperty={planet.population} />
       </div>
-      {renderFilmDetails(
-        person.name,
-        filmsGotLoaded,
-        filmsData,
-        isOpened,
-        setIsOpened,
-      )}
+      <RenderFilmDetails
+        isOpened={isOpened}
+        setIsOpened={setIsOpened}
+        films={films}
+        filmUrl={filmUrl}
+        fetchFilms={fetchFilms}
+      />
     </>
   );
 };
 
 SingleResult.defaultProps = {
-  person: 'person',
-  pageNumber: 1,
+  person: {},
 };
 
 SingleResult.propTypes = {
-  person: PropTypes.string,
-  pageNumber: PropTypes.number,
+  person: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.array])),
 };
 
 export default SingleResult;

@@ -1,11 +1,12 @@
+/* eslint-disable no-param-reassign */
+
 import { createReducer } from '@reduxjs/toolkit';
 import { initialState } from './defaultState';
-import { setPeopleData } from './actions';
+import { setPeople } from './actions';
 
 const peopleReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(setPeopleData, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
+    .addCase(setPeople, (state, action) => {
       state.peopleList = action.payload.peopleList;
     });
 });

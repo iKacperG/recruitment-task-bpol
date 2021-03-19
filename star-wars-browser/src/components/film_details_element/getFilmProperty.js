@@ -1,7 +1,7 @@
 const getFilmProperty = (filmProperty, shrinkable, maxCharacters) => {
   let letterCount = 0;
 
-  if (shrinkable === true) {
+  if (shrinkable) {
     const filmPropertyShrinked = filmProperty
       .split(' ')
       .map((word) => {

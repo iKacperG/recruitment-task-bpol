@@ -3,34 +3,44 @@ import PropTypes from 'prop-types';
 import SingleResult from '../single_result';
 import Paginate from './Paginate';
 
-const SearchResults = ({ pageNumber, changePage, peopleData }) => {
+const SearchResults = ({
+  pageNumber,
+  changePage,
+  people,
+}) => {
   const [labelClassName, setLabelClassName] = useState(
     'search-results-label__list d-none',
   );
 
-  const currentCharactersPage = peopleData[pageNumber - 1];
+  const currentCharactersPage = people[pageNumber - 1];
 
   useEffect(() => {
-    if (peopleData.length > 1) setLabelClassName('search-results-label__list');
-  }, [peopleData]);
+    if (people.length > 1) setLabelClassName('search-results-label__list');
+  }, [people]);
+
+  const handlePageButtonClick = () => {
+    changePage(pageNumber);
+  };
 
   return (
     <>
-      <button type="button" onClick={changePage(pageNumber)}>{pageNumber}</button>
+      <button type="button" onClick={handlePageButtonClick}>{pageNumber}</button>
       <ul className={labelClassName}>
-        <li className="search-results-label__element">Name</li>
-        <li className="search-results-label__element">Homeland</li>
-        <li className="search-results-label__element">Population</li>
+        <li className="search-results-label__element" key="name">Name</li>
+        <li className="search-results-label__element" key="homeland">Homeland</li>
+        <li className="search-results-label__element" key="population">Population</li>
       </ul>
-      <ul>
+      <div>
         {currentCharactersPage?.map((person) => (
-          <SingleResult person={person} />
+          <>
+            <SingleResult person={person} planetUrl={person.homeworld} key={person.name} />
+          </>
         ))}
-      </ul>
+      </div>
 
-      <ul className="page-changing__container">
-        <Paginate peopleData={peopleData} />
-      </ul>
+      <div className="page-changing__container">
+        <Paginate people={people} />
+      </div>
     </>
   );
 };
@@ -38,13 +48,13 @@ const SearchResults = ({ pageNumber, changePage, peopleData }) => {
 SearchResults.defaultProps = {
   pageNumber: 1,
   changePage: () => {},
-  peopleData: [],
+  people: [],
 };
 
 SearchResults.propTypes = {
   pageNumber: PropTypes.number,
   changePage: PropTypes.func,
-  peopleData: PropTypes.arrayOf(PropTypes.array),
+  people: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default SearchResults;

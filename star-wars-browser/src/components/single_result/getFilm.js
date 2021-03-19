@@ -1,7 +1,7 @@
-const getFilm = async (film, setFilmsData) => {
+const getFilm = async (film, setFilms) => {
   const response = await fetch(film);
   const data = await response.json();
-  setFilmsData((prev) => [...prev, data]);
+  setFilms((prev) => [...prev, data]);
 };
 
 export default getFilm;

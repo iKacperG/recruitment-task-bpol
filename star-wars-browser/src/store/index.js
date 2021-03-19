@@ -1,12 +1,28 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
-/* eslint-disable no-underscore-dangle */
+import reducers from './reducers';
+import rootSaga from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
+const middleware = [sagaMiddleware];
+
+let composeEnhancers = compose;
+
+if (process.env.NODE_ENV === 'development') {
+  // Compose with redux devtools if it exists in the browser
+  const {
+    // @ts-ignore
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: devToolsCompose = null,
+  } = window;
+  composeEnhancers = devToolsCompose || compose;
+}
 
 const store = createStore(
-  rootReducer, /* preloadedState, */
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  reducers,
+  composeEnhancers(applyMiddleware(...middleware)),
 );
-/* eslint-enable */
+
+sagaMiddleware.run(rootSaga);
 
 export default store;
