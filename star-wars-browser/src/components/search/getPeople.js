@@ -1,6 +1,6 @@
 import { SWAPI_ADDRESS } from '../../config';
 
-const getPeople = async (typedSearchQuery, setpeople) => {
+const getPeople = async (typedSearchQuery, setPeople) => {
   const peopleArray = [];
   console.log('Getting data');
   let response = await fetch(
@@ -18,7 +18,7 @@ const getPeople = async (typedSearchQuery, setpeople) => {
     peopleArray.push(data.results);
   }
   peopleArray.push(data.results);
-  setpeople(peopleArray);
+  setPeople(peopleArray);
 };
 
 export default getPeople;

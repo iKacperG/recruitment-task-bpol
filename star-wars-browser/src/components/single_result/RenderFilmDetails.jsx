@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-
 import FilmDetailsElement from '../film_details_element';
 
 const RenderFilmDetails = ({
-
   characterAttended,
   filmsGotLoaded,
   isOpened,

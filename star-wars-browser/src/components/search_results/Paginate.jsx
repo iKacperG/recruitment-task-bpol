@@ -27,7 +27,7 @@ Paginate.defaultProps = {
 };
 
 Paginate.propTypes = {
-  people: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  people: PropTypes.arrayOf(PropTypes.array),
 };
 
 export default Paginate;

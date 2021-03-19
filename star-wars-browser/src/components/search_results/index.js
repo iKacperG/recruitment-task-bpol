@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import SearchResults from './SearchResults';
 import { getPageNumber } from '../../store/pagination/selectors';
-import { getpeople } from '../../store/people/selectors';
+import { getPeople } from '../../store/people/selectors';
 import { changePage } from '../../store/pagination/actions';
 import { fetchPeople, setPeople } from '../../store/people/actions';
 
 const mapStateToProps = (state) => ({
   pageNumber: getPageNumber(state),
-  people: getpeople(state),
+  people: getPeople(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

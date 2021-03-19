@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const getpeople = (state) => state.people.peopleList;
+export const getPeople = (state) => state.people.peopleList;
